@@ -1,5 +1,7 @@
 package com.example.demo.dtos;
 
+import com.example.demo.model.Enums;
+
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -10,13 +12,13 @@ public class RoleDto {
     private LocalDateTime created;
     private LocalDateTime modified;
     private UUID id;
-    private String role;
+    private Enums.Role role;
     private Boolean isDeleted;
 
     public RoleDto() {
     }
 
-    public RoleDto(LocalDateTime created, LocalDateTime modified, UUID id, String role, Boolean isDeleted) {
+    public RoleDto(LocalDateTime created, LocalDateTime modified, UUID id, Enums.Role role, Boolean isDeleted) {
         this.created = created;
         this.modified = modified;
         this.id = id;
@@ -48,11 +50,11 @@ public class RoleDto {
         this.id = id;
     }
 
-    public String getRole() {
+    public Enums.Role getRole() {
         return this.role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Enums.Role role) {
         this.role = role;
     }
 

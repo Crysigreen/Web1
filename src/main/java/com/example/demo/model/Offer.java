@@ -22,10 +22,10 @@ public class Offer extends BaseEntity{
     @Column(name = "year")
     private Date year;
     @ManyToOne
-    @JoinColumn(name = "model_id")
+    @JoinColumn(name = "model_id", referencedColumnName = "id")
     private Model model;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User seller;
 
 

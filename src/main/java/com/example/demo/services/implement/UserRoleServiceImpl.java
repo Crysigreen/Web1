@@ -22,9 +22,7 @@ public class UserRoleServiceImpl implements UserRoleService<UUID>{
     @Override
     public RoleDto createNewRole(RoleDto userRoleDto) {
         UserRole userRole = modelMapper.map(userRoleDto, UserRole.class);
-        userRole.setRole(Enums.Role.valueOf(userRoleDto.getRole()));
-        userRoleRepository.save(userRole);
-        return modelMapper.map(userRole, RoleDto.class);
+        return modelMapper.map(userRoleRepository.save(userRole), RoleDto.class);
     }
 
     @Override
