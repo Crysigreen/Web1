@@ -1,0 +1,41 @@
+package com.example.demo.Controller;
+
+import com.example.demo.dtos.RoleDto;
+import com.example.demo.model.Enums;
+import com.example.demo.services.UserRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class RoleController {
+    @Autowired
+    private UserRoleService roleService;
+
+
+    @PostMapping("/role")
+    RoleDto createNewRole(@RequestBody RoleDto roleDto){
+        RoleDto createRole = roleService.createNewRole(roleDto);
+        return createRole;
+    }
+
+    @GetMapping("/role")
+    public void getAllRoles(){
+
+    }
+
+    @GetMapping("/role/{id}")
+    public void getRoleById(){
+
+    }
+
+    @PutMapping("/role/{id}")
+    public void updateRole(){
+
+
+    }
+
+    @DeleteMapping("/role/{id}")
+    public void deleteRole(){
+
+    }
+}
