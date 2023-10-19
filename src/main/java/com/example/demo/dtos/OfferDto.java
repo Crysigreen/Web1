@@ -1,5 +1,7 @@
 package com.example.demo.dtos;
 
+import com.example.demo.model.Enums;
+
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -16,17 +18,17 @@ public class OfferDto {
     private UUID id;
     private Long mileage;
     private String description;
-    private String engine;
+    private Enums.Engine engine;
     private String imageurl;
-    private ModelDto model;
-    private UserDto seller;
-    private String transmission;
+    private UUID model;
+    private UUID seller;
+    private Enums.Transmission transmission;
     private Boolean isDeleted;
 
     public OfferDto() {
     }
 
-    public OfferDto(LocalDateTime created, LocalDateTime modified, BigDecimal price, Year year, UUID id, Long mileage, String description, String engine, String imageurl, ModelDto model, UserDto seller, String transmission, Boolean isDeleted) {
+    public OfferDto(LocalDateTime created, LocalDateTime modified, BigDecimal price, Year year, UUID id, Long mileage, String description, Enums.Engine engine, String imageurl, UUID model, UUID seller, Enums.Transmission transmission, Boolean isDeleted) {
         this.created = created;
         this.modified = modified;
         this.price = price;
@@ -98,11 +100,11 @@ public class OfferDto {
         this.description = description;
     }
 
-    public String getEngine() {
+    public Enums.Engine getEngine() {
         return this.engine;
     }
 
-    public void setEngine(String engine) {
+    public void setEngine(Enums.Engine engine) {
         this.engine = engine;
     }
 
@@ -114,27 +116,27 @@ public class OfferDto {
         this.imageurl = imageurl;
     }
 
-    public ModelDto getModel() {
+    public UUID getModel() {
         return this.model;
     }
 
-    public void setModel(ModelDto model) {
+    public void setModel(UUID model) {
         this.model = model;
     }
 
-    public UserDto getSeller() {
+    public UUID getSeller() {
         return this.seller;
     }
 
-    public void setSeller(UserDto seller) {
+    public void setSeller(UUID seller) {
         this.seller = seller;
     }
 
-    public String getTransmission() {
+    public Enums.Transmission getTransmission() {
         return this.transmission;
     }
 
-    public void setTransmission(String transmission) {
+    public void setTransmission(Enums.Transmission transmission) {
         this.transmission = transmission;
     }
 

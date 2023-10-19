@@ -2,7 +2,9 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.Year;
 
 @Entity
 @Table(name = "offer")
@@ -16,11 +18,11 @@ public class Offer extends BaseEntity{
     @Column(name = "mileage")
     private Long mileage;
     @Column(name = "price")
-    private Date price;
+    private BigDecimal price;
     @Column(name = "transmission")
     private Enums.Transmission transmission;
     @Column(name = "year")
-    private Date year;
+    private Year year;
     @ManyToOne
     @JoinColumn(name = "model_id", referencedColumnName = "id")
     private Model model;
@@ -33,7 +35,7 @@ public class Offer extends BaseEntity{
     public Offer() {
     }
 
-    public Offer(String description, Enums.Engine engine, String imageurl, Long mileage, Date price, Enums.Transmission transmission, Date year, Model model, User seller) {
+    public Offer(String description, Enums.Engine engine, String imageurl, Long mileage, BigDecimal price, Enums.Transmission transmission, Year year, Model model, User seller) {
         this.description = description;
         this.engine = engine;
         this.imageurl = imageurl;
@@ -66,10 +68,10 @@ public class Offer extends BaseEntity{
     public void setMileage(Long mileage) {
         this.mileage = mileage;
     }
-    public Date getPrice() {
+    public BigDecimal getPrice() {
         return this.price;
     }
-    public void setPrice(Date price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
     public Enums.Engine getEngine() {
@@ -84,10 +86,10 @@ public class Offer extends BaseEntity{
     public void setTransmission(Enums.Transmission transmission) {
         this.transmission = transmission;
     }
-    public Date getYear() {
+    public Year getYear() {
         return this.year;
     }
-    public void setYear(Date year) {
+    public void setYear(Year year) {
         this.year = year;
     }
     public void setModel(Model model) {
