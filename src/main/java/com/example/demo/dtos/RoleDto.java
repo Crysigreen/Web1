@@ -9,8 +9,6 @@ import java.util.UUID;
 
 public class RoleDto {
 
-    private LocalDateTime created;
-    private LocalDateTime modified;
     private UUID id;
     private Enums.Role role;
     private Boolean isDeleted;
@@ -18,32 +16,14 @@ public class RoleDto {
     public RoleDto() {
     }
 
-    public RoleDto(LocalDateTime created, LocalDateTime modified, UUID id, Enums.Role role, Boolean isDeleted) {
-        this.created = created;
-        this.modified = modified;
+    public RoleDto(UUID id, Enums.Role role, Boolean isDeleted) {
         this.id = id;
         this.role = role;
         this.isDeleted = isDeleted;
     }
 
-    public LocalDateTime getCreated() {
-        return this.created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public LocalDateTime getModified() {
-        return this.modified;
-    }
-
-    public void setModified(LocalDateTime modified) {
-        this.modified = modified;
-    }
-
     public UUID getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(UUID id) {
@@ -51,7 +31,7 @@ public class RoleDto {
     }
 
     public Enums.Role getRole() {
-        return this.role;
+        return role;
     }
 
     public void setRole(Enums.Role role) {

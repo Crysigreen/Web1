@@ -8,7 +8,7 @@ import java.time.Year;
 
 @Entity
 @Table(name = "offer")
-public class Offer extends BaseEntity{
+public class Offer extends BaseEntity2{
     @Column(name = "description")
     private String description;
     @Column(name = "engine")

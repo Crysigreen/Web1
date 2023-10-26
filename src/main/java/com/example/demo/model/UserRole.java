@@ -9,7 +9,6 @@ import java.sql.Date;
 public class UserRole extends BaseEntity {
     @Column(name = "role")
     private Enums.Role role;
-
     public UserRole() {
     }
 

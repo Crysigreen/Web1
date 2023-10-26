@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "model")
-public class Model extends BaseEntity{
+public class Model extends BaseEntity2{
 
     @Column(name = "name")
     private String name;

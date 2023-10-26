@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "brand")
-public class Brand extends BaseEntity{
+public class Brand extends BaseEntity2{
 
     @Column(name = "name")
     private String name;

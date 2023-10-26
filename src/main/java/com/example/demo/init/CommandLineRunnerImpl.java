@@ -75,8 +75,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         ////////////////////////////////////////////////////////////////////////
 
-        RoleDto roleDto1 = new RoleDto(LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), null, Enums.Role.User,false);
-        RoleDto roleDto2 = new RoleDto(LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), null, Enums.Role.Admin,false);
+        RoleDto roleDto1 = new RoleDto( null, Enums.Role.User,false);
+        RoleDto roleDto2 = new RoleDto( null, Enums.Role.Admin,false);
 
         RoleDto roleDto11 = userRoleService.createNewRole(roleDto1);
         RoleDto roleDto22 = userRoleService.createNewRole(roleDto2);
