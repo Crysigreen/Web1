@@ -15,9 +15,18 @@ import java.util.UUID;
 @Service
 public class UserRoleServiceImpl implements UserRoleService<UUID>{
 
-    @Autowired
+
     private ModelMapper modelMapper;
-    @Autowired private UserRoleRepository userRoleRepository;
+
+    private UserRoleRepository userRoleRepository;
+    @Autowired
+    public void setUserRoleRepository(UserRoleRepository userRoleRepository) {
+        this.userRoleRepository = userRoleRepository;
+    }
+    @Autowired
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public RoleDto createNewRole(RoleDto userRoleDto) {

@@ -15,12 +15,17 @@ import java.util.UUID;
 @Service
 public class BrandServiceImpl implements BrandService<UUID> {
 
-    @Autowired
     private ModelMapper modelMapper;
-
-    @Autowired
     private BrandRepository brandRepository;
 
+    @Autowired
+    public void setBrandRepository(BrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
+    }
+    @Autowired
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public BrandDto createNewBrand(BrandDto brandDto) {
@@ -52,5 +57,13 @@ public class BrandServiceImpl implements BrandService<UUID> {
     @Override
     public void deleteBrand(UUID id) {
         brandRepository.deleteById(id);
+    }
+
+    @Override
+    public BrandDto isDeleted(UUID id){
+        Brand brand = brandRepository.findById(id).get();
+        brand.setDeleted(true);
+        brandRepository.save(brand);
+        return modelMapper.map(brand,BrandDto.class);
     }
 }

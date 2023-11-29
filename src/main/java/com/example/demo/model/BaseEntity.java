@@ -8,22 +8,22 @@ import java.util.UUID;
 
 @MappedSuperclass
 public abstract class BaseEntity  {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id")
-    protected UUID id;
 
-    @Column(name = "is_deleted", nullable = false)
-    private Boolean isDeleted;
+    protected UUID id;
+    //@Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted;
 
     public BaseEntity() {
     }
 
-    public BaseEntity(UUID id, Boolean isDeleted) {
-        this.id = id;
-        this.isDeleted = isDeleted;
-    }
+//    public BaseEntity(UUID id, Boolean isDeleted) {
+//        this.id = id;
+//        this.isDeleted = isDeleted;
+//    }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     public UUID getId() {
         return id;
     }
@@ -32,13 +32,12 @@ public abstract class BaseEntity  {
         this.id = id;
     }
 
+    @Column(name = "is_deleted", nullable = false)
     public Boolean getDeleted() {
         return isDeleted;
     }
 
     public void setDeleted(Boolean deleted) {
-        isDeleted = deleted;
+        this.isDeleted = deleted;
     }
-
-
 }

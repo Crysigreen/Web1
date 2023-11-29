@@ -17,6 +17,7 @@ public interface BrandService<ID> {
 
     BrandDto updateBrand(ID id, BrandDto brandDto);
 
+    BrandDto isDeleted (ID id);
     void deleteBrand(ID id);
 
 }

@@ -13,10 +13,17 @@ import java.util.UUID;
 
 @Service
 public class OfferServiceImpl implements OfferService<UUID> {
-    @Autowired
+
     private OfferRepository offerRepository;
-    @Autowired
     private ModelMapper modelMapper;
+    @Autowired
+    public void setOfferRepository(OfferRepository offerRepository) {
+        this.offerRepository = offerRepository;
+    }
+    @Autowired
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public OfferDto createOffer(OfferDto offerDto){

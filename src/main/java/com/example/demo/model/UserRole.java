@@ -7,17 +7,18 @@ import java.sql.Date;
 @Entity
 @Table(name = "user_role")
 public class UserRole extends BaseEntity {
-    @Column(name = "role")
+//    @Column(name = "role")
     private Enums.Role role;
     public UserRole() {
     }
 
-    public UserRole(Enums.Role role) {
-        this.role = role;
-    }
+//    public UserRole(Enums.Role role) {
+//        this.role = role;
+//    }
 
     //Getters and Setters
 
+    @Column(name = "role")
     public Enums.Role getRole() {
         return role;
     }

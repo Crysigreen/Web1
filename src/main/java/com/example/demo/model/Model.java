@@ -9,36 +9,36 @@ import java.time.LocalDateTime;
 @Table(name = "model")
 public class Model extends BaseEntity2{
 
-    @Column(name = "name")
+    //@Column(name = "name")
     private String name;
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "category")
+//    @Enumerated(EnumType.ORDINAL)
+//    @Column(name = "category")
     private Enums.Category category;
-    @Column(name = "imageurl")
+    //@Column(name = "imageurl")
     private String imageurl;
-    @Column(name = "startyear")
+    //@Column(name = "startyear")
     private LocalDateTime startyear;
-    @Column(name = "endyear")
+//    @Column(name = "endyear")
     private LocalDateTime endyear;
-    @ManyToOne
-    @JoinColumn(name = "brand_id")
+//    @ManyToOne
+//    @JoinColumn(name = "brand_id")
     private Brand brand;
 
 
     public Model() {
     }
 
-    public Model(String name, Enums.Category category, String imageurl, LocalDateTime startyear, LocalDateTime endyear, Brand brand) {
-        this.name = name;
-        this.category = category;
-        this.imageurl = imageurl;
-        this.startyear = startyear;
-        this.endyear = endyear;
-        this.brand = brand;
-    }
+//    public Model(String name, Enums.Category category, String imageurl, LocalDateTime startyear, LocalDateTime endyear, Brand brand) {
+//        this.name = name;
+//        this.category = category;
+//        this.imageurl = imageurl;
+//        this.startyear = startyear;
+//        this.endyear = endyear;
+//        this.brand = brand;
+//    }
 
     //Getters and Setters
-
+    @Column(name = "name")
     public String getName() {
         return this.name;
     }
@@ -47,6 +47,8 @@ public class Model extends BaseEntity2{
         this.name = name;
     }
 
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "category")
     public Enums.Category getCategory() {
         return category;
     }
@@ -55,6 +57,7 @@ public class Model extends BaseEntity2{
         this.category = category;
     }
 
+    @Column(name = "imageurl")
     public String getImageurl() {
         return this.imageurl;
     }
@@ -63,6 +66,7 @@ public class Model extends BaseEntity2{
         this.imageurl = imageurl;
     }
 
+    @Column(name = "startyear")
     public LocalDateTime getStartyear() {
         return this.startyear;
     }
@@ -71,6 +75,7 @@ public class Model extends BaseEntity2{
         this.startyear = startyear;
     }
 
+    @Column(name = "endyear")
     public LocalDateTime getEndyear() {
         return this.endyear;
     }
@@ -79,6 +84,8 @@ public class Model extends BaseEntity2{
         this.endyear = endyear;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
     public Brand getBrand() {
         return brand;
     }

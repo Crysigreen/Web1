@@ -10,9 +10,13 @@ import java.util.UUID;
 
 @RestController
 public class BrandController {
-    @Autowired
+
     private BrandService brandService;
 
+    @Autowired
+    public  void setBrandService(BrandService brandService){
+        this.brandService = brandService;
+    }
 
     @PostMapping("/brand")
     BrandDto createNewBrand(@RequestBody BrandDto brandDto){
@@ -42,6 +46,12 @@ public class BrandController {
     Void deleteBrand(@PathVariable UUID id){
         brandService.deleteBrand(id);
         return null;
+    }
+
+    @GetMapping("/brand/delete/{id}")
+    BrandDto isDeleted(@PathVariable UUID id){
+        BrandDto deletedBrand = brandService.isDeleted(id);
+        return deletedBrand;
     }
 
 

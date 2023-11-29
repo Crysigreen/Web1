@@ -12,9 +12,13 @@ import java.util.UUID;
 
 @RestController
 public class RoleController {
-    @Autowired
+
     private UserRoleService roleService;
 
+    @Autowired
+    public void setRoleService(UserRoleService roleService){
+        this.roleService = roleService;
+    }
 
     @PostMapping("/role")
     RoleDto createNewRole(@RequestBody RoleDto roleDto){

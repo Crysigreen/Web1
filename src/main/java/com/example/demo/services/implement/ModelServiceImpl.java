@@ -14,16 +14,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
 public class ModelServiceImpl implements ModelService<UUID> {
 
-    @Autowired
     private ModelMapper modelMapper;
-
-    @Autowired
     private ModelRepository modelRepository;
+    @Autowired
+    public void setModelRepository(ModelRepository modelRepository) {
+        this.modelRepository = modelRepository;
+    }
+    @Autowired
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public ModelDto createNewModel(ModelDto modelDto) {
@@ -49,6 +55,11 @@ public class ModelServiceImpl implements ModelService<UUID> {
         Model model = modelRepository.findById(id).get();
         modelMapper.map(modelDto, model);
         return modelMapper.map(modelRepository.save(model), ModelDto.class);
+    }
+
+    @Override
+    public List<Model> findAllModelByUserName(String firstName){
+        return modelRepository.findAllModelByUserName(firstName);
     }
 
     @Override

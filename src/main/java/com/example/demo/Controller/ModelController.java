@@ -11,8 +11,14 @@ import java.util.UUID;
 
 @RestController
 public class ModelController {
-    @Autowired
+
     private ModelService modelService;
+
+    @Autowired
+    public void setModelService(ModelService modelService){
+        this.modelService = modelService;
+    }
+
 
     @PostMapping("/model")
     ModelDto createNewModel(@RequestBody ModelDto modelDto){
@@ -24,6 +30,11 @@ public class ModelController {
     List<ModelDto> getAllModels(){
         List<ModelDto> models = modelService.getAllModels();
         return models;
+    }
+
+    @GetMapping("/model/1")
+    List<ModelDto> findAllModelByUserName(@RequestBody String firstname){
+        return modelService.findAllModelByUserName(firstname);
     }
 
     @GetMapping("/model/{id}")

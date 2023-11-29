@@ -10,8 +10,13 @@ import java.util.UUID;
 
 @RestController
 public class UserController {
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService){
+        this.userService = userService;
+    }
 
 
     @PostMapping("/user")

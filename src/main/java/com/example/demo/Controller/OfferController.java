@@ -10,8 +10,13 @@ import java.util.UUID;
 
 @RestController
 public class OfferController {
-    @Autowired
+
     private OfferService offerService;
+
+    @Autowired
+    public void setOfferService(OfferService offerService){
+        this.offerService = offerService;
+    }
 
     @PostMapping("/offer")
     public OfferDto createOffer(@RequestBody OfferDto offerDto){

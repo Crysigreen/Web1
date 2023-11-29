@@ -17,23 +17,31 @@ import java.util.UUID;
 @Component
 public class CommandLineRunnerImpl implements CommandLineRunner {
 
-    @Autowired
     private ModelService modelService;
-
-    @Autowired
     private BrandService brandService;
-
-    @Autowired
     private UserService userService;
-
-    @Autowired
     private OfferService offerService;
-
-    @Autowired
     private UserRoleService userRoleService;
-
-
-
+    @Autowired
+    public void setBrandService(BrandService brandService) {
+        this.brandService = brandService;
+    }
+    @Autowired
+    public void setModelService(ModelService modelService) {
+        this.modelService = modelService;
+    }
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+    @Autowired
+    public void setOfferService(OfferService offerService) {
+        this.offerService = offerService;
+    }
+    @Autowired
+    public void setUserRoleService(UserRoleService userRoleService) {
+        this.userRoleService = userRoleService;
+    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -44,11 +52,11 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private void addDataAboutAuto() throws IOException {
 
 
-        BrandDto brandDto1 = new BrandDto( null,"BMW", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
-        BrandDto brandDto2 = new BrandDto( null,"Toyota", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
-        BrandDto brandDto3 = new BrandDto( null,"Mercedes", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
-        BrandDto brandDto4 = new BrandDto( null,"OMODA", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
-        BrandDto brandDto5 = new BrandDto( null,"Audi", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
+        BrandDto brandDto1 = new BrandDto( null,"BMW", false);
+        BrandDto brandDto2 = new BrandDto( null,"Toyota",  false);
+        BrandDto brandDto3 = new BrandDto( null,"Mercedes",  false);
+        BrandDto brandDto4 = new BrandDto( null,"OMODA", false);
+        BrandDto brandDto5 = new BrandDto( null,"Audi",false);
 
         BrandDto brandDto11 = brandService.createNewBrand(brandDto1);
         BrandDto brandDto21 = brandService.createNewBrand(brandDto2);
@@ -83,11 +91,11 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         ////////////////////////////////////////////////////////////////////////
 
-        UserDto userDto1 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName", "imageurl","lastName","password",roleDto11,"username1",false );
-        UserDto userDto2 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName", "imageurl","lastName","password",roleDto11,"username2",false );
-        UserDto userDto3 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName", "imageurl","lastName","password",roleDto11,"username3",false );
-        UserDto userDto4 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName", "imageurl","lastName","password",roleDto11,"username4",false );
-        UserDto userDto5 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName", "imageurl","lastName","password",roleDto22,"username5",false );
+        UserDto userDto1 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName1", "imageurl","lastName","password",roleDto11,"username1",false );
+        UserDto userDto2 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName2", "imageurl","lastName","password",roleDto11,"username2",false );
+        UserDto userDto3 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName3", "imageurl","lastName","password",roleDto11,"username3",false );
+        UserDto userDto4 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName4", "imageurl","lastName","password",roleDto11,"username4",false );
+        UserDto userDto5 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName5", "imageurl","lastName","password",roleDto22,"username5",false );
 
         UserDto userDto11 =  userService.createUser(userDto1);
         UserDto userDto22 = userService.createUser(userDto2);
