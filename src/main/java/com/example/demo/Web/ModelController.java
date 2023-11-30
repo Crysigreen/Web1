@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.Web;
 
 import com.example.demo.dtos.ModelDto;
 import org.springframework.beans.factory.annotation.Autowired;

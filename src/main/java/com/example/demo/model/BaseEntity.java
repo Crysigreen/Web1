@@ -13,8 +13,8 @@ public abstract class BaseEntity  {
     //@Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
 
-    public BaseEntity() {
-    }
+//    public BaseEntity() {
+//    }
 
 //    public BaseEntity(UUID id, Boolean isDeleted) {
 //        this.id = id;

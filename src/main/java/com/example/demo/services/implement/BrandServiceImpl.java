@@ -1,6 +1,7 @@
 package com.example.demo.services.implement;
 
 import com.example.demo.dtos.BrandDto;
+import com.example.demo.dtos.addBrandDto;
 import com.example.demo.model.Brand;
 import com.example.demo.repositories.BrandRepository;
 import com.example.demo.services.BrandService;
@@ -15,16 +16,27 @@ import java.util.UUID;
 @Service
 public class BrandServiceImpl implements BrandService<UUID> {
 
-    private ModelMapper modelMapper;
-    private BrandRepository brandRepository;
+    private final ModelMapper modelMapper;
+    private final BrandRepository brandRepository;
 
-    @Autowired
-    public void setBrandRepository(BrandRepository brandRepository) {
+    public BrandServiceImpl(ModelMapper modelMapper, BrandRepository brandRepository) {
+        this.modelMapper = modelMapper;
         this.brandRepository = brandRepository;
     }
-    @Autowired
-    public void setModelMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
+
+
+//    @Autowired
+//    public void setBrandRepository(BrandRepository brandRepository) {
+//        this.brandRepository = brandRepository;
+//    }
+//    @Autowired
+//    public void setModelMapper(ModelMapper modelMapper) {
+//        this.modelMapper = modelMapper;
+//    }
+
+
+    public void addNewBrand(addBrandDto brandDto) {
+        brandRepository.saveAndFlush(modelMapper.map(brandDto, Brand.class));
     }
 
     @Override
@@ -46,6 +58,12 @@ public class BrandServiceImpl implements BrandService<UUID> {
     public BrandDto getBrandById(UUID id) {
         return modelMapper.map(brandRepository.findById(id).get(), BrandDto.class);
     }
+
+    public void removeCompany(String brandName) {
+        brandRepository.deleteByName(brandName);
+    }
+
+
 
     @Override
     public BrandDto updateBrand(UUID id, BrandDto brandDto) {

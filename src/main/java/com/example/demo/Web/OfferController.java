@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.Web;
 
 import com.example.demo.dtos.OfferDto;
 import com.example.demo.services.OfferService;

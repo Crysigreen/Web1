@@ -1,8 +1,6 @@
-package com.example.demo.Controller;
+package com.example.demo.Web;
 
 import com.example.demo.dtos.RoleDto;
-import com.example.demo.model.Enums;
-import com.example.demo.model.UserRole;
 import com.example.demo.services.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
