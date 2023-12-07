@@ -1,6 +1,7 @@
 package com.example.demo.services.implement;
 
 import com.example.demo.dtos.OfferDto;
+import com.example.demo.dtos.homeOffer;
 import com.example.demo.model.Offer;
 import com.example.demo.repositories.OfferRepository;
 import com.example.demo.services.OfferService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class OfferServiceImpl implements OfferService<UUID> {
@@ -37,6 +39,12 @@ public class OfferServiceImpl implements OfferService<UUID> {
         return offers.stream()
                 .map(offer -> modelMapper.map(offer, OfferDto.class))
                 .collect(java.util.stream.Collectors.toList());
+    }
+
+    @Override
+    public List<homeOffer> getHomeOffer(){
+        List<homeOffer> offerList = offerRepository.findHomeOffers();
+        return offerList.stream().collect(Collectors.toList());
     }
 
     @Override

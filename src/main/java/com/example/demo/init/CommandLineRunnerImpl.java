@@ -68,13 +68,23 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 /////////////////////////////////////////////////////////////////////////////////
 
 
-        ModelDto modelDto1 = new ModelDto( null, "name", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto11, Enums.Category.Buss, "fdfs",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
+        ModelDto modelDto1 = new ModelDto( null, "X6", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto11, Enums.Category.Car, "https://bmwband.ru/uploads/carspic/BMW%20X6%20(F16).jpg",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
+        ModelDto modelDtoBMW1 = new ModelDto( null, "X5", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto11, Enums.Category.Car, "https://bmwband.ru/uploads/carspic/BMW%20X5%20(G05).jpg",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
+        ModelDto modelDtoBMW2 = new ModelDto( null, "X4", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto11, Enums.Category.Car, "https://bmwband.ru/uploads/carspic/BMW%20X4%20(G02).jpg",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
+        ModelDto modelDtoBMW3 = new ModelDto( null, "X3", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto11, Enums.Category.Car, "https://bmwband.ru/uploads/carspic/BMW%20X3%20(G01).jpg",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
+        ModelDto modelDtoBMW4 = new ModelDto( null, "M5", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto11, Enums.Category.Car, "https://bmwband.ru/uploads/carspic/BMW%20M5%20(F90).jpg",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
+        ModelDto modelDtoBMW5 = new ModelDto( null, "M4", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto11, Enums.Category.Car, "https://bmwband.ru/uploads/carspic/BMW%20M4%20(F82).jpg",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
         ModelDto modelDto2 = new ModelDto( null,"name", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto21, Enums.Category.Motorcycle, "fdfs",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
         ModelDto modelDto3 = new ModelDto( null,"name", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto31, Enums.Category.Car, "fdfs",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
         ModelDto modelDto4 = new ModelDto( null,"name", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto41, Enums.Category.Truck, "fdfs",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
         ModelDto modelDto5 = new ModelDto( null,"name", LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), brandDto51, Enums.Category.Buss, "fdfs",LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), false);
 
         ModelDto modelDto11 = modelService.createNewModel(modelDto1);
+        ModelDto modelDto1BMW1 = modelService.createNewModel(modelDtoBMW1);
+        ModelDto modelDto1BMW2 = modelService.createNewModel(modelDtoBMW2);
+        ModelDto modelDto1BMW3 = modelService.createNewModel(modelDtoBMW3);
+        ModelDto modelDto1BMW4 = modelService.createNewModel(modelDtoBMW4);
+        ModelDto modelDto1BMW5 = modelService.createNewModel(modelDtoBMW5);
         ModelDto modelDto22 = modelService.createNewModel(modelDto2);
         ModelDto modelDto33 = modelService.createNewModel(modelDto3);
         ModelDto modelDto44 = modelService.createNewModel(modelDto4);
