@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,13 +24,23 @@ public class User extends BaseEntity2{
 
 //    @ManyToOne
 //    @JoinColumn(name = "role_id")
-    private UserRole roleId;
+    private List<UserRole> role;
 
 //    @Column(name = "imageurl")
     private String imageurl;
 
 
     public User() {
+    }
+
+    public User(String username, String password, String firstname, String lastname, Boolean isactive) {
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.isactive = isactive;
+
+
     }
 
 //    public User(String username, String password, String firstname, String lastname, Boolean isactive, UserRole roleId, String imageurl) {
@@ -86,14 +96,14 @@ public class User extends BaseEntity2{
         this.isactive = isactive;
     }
 
-    @ManyToOne
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
-    public UserRole getRoleId() {
-        return roleId;
+    public List<UserRole> getRole() {
+        return role;
     }
 
-    public void setRoleId(UserRole roleId) {
-        this.roleId = roleId;
+    public void setRole(List<UserRole> roleId) {
+        this.role = roleId;
     }
 
     @Column(name = "imageurl")

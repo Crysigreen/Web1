@@ -8,22 +8,22 @@ import java.sql.Date;
 @Table(name = "user_role")
 public class UserRole extends BaseEntity {
 //    @Column(name = "role")
-    private Enums.Role role;
+    private Enums.Role name;
+    public UserRole(Enums.Role name) {
+        this.name = name;
+    }
+
     public UserRole() {
+
     }
 
-//    public UserRole(Enums.Role role) {
-//        this.role = role;
-//    }
-
-    //Getters and Setters
-
-    @Column(name = "role")
-    public Enums.Role getRole() {
-        return role;
+    @Enumerated(EnumType.STRING)
+    @Column(unique = true)
+    public Enums.Role getName() {
+        return name;
     }
 
-    public void setRole(Enums.Role role) {
-        this.role = role;
+    public void setName(Enums.Role name) {
+        this.name = name;
     }
 }
