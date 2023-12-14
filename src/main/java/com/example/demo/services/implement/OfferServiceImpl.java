@@ -1,14 +1,21 @@
 package com.example.demo.services.implement;
 
+import com.example.demo.dtos.AddOfferDto;
 import com.example.demo.dtos.OfferDto;
 import com.example.demo.dtos.homeOffer;
 import com.example.demo.model.Offer;
+import com.example.demo.repositories.ModelRepository;
 import com.example.demo.repositories.OfferRepository;
+import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.OfferService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -18,6 +25,8 @@ public class OfferServiceImpl implements OfferService<UUID> {
 
     private OfferRepository offerRepository;
     private ModelMapper modelMapper;
+    private ModelRepository modelRepository;
+    private UserRepository userRepository;
     @Autowired
     public void setOfferRepository(OfferRepository offerRepository) {
         this.offerRepository = offerRepository;
@@ -25,7 +34,18 @@ public class OfferServiceImpl implements OfferService<UUID> {
     @Autowired
     public void setModelMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
+        modelMapper.addMappings(new PropertyMap<Offer, AddOfferDto>() {
+            @Override
+            protected void configure() {
+                map().setModel(source.getModel().getName());
+            }
+        });
     }
+    @Autowired
+    public void setModelRepository(ModelRepository modelRepository){this.modelRepository = modelRepository;}
+    @Autowired
+    public void setUserRepository(UserRepository userRepository){this.userRepository = userRepository;}
+
 
     @Override
     public OfferDto createOffer(OfferDto offerDto){
@@ -33,11 +53,21 @@ public class OfferServiceImpl implements OfferService<UUID> {
         return modelMapper.map(offerRepository.save(offer), OfferDto.class);
     }
 
+    @CacheEvict(cacheNames = "offers", allEntries = true)
+    public void register(AddOfferDto offer) {
+        Offer of = modelMapper.map(offer, Offer.class);
+        of.setCreated(LocalDateTime.now());
+        of.setModel(modelRepository.findByName(offer.getModel()).orElse(null));
+        of.setSeller(userRepository.findByUsername(offer.getUser()).orElse(null));
+        offerRepository.saveAndFlush(of);
+    }
+
     @Override
-    public List<OfferDto> getAllOffers(){
+    public List<AddOfferDto> getAllOffers(){
+
         List<Offer> offers = offerRepository.findAll();
         return offers.stream()
-                .map(offer -> modelMapper.map(offer, OfferDto.class))
+                .map(offer -> modelMapper.map(offer, AddOfferDto.class))
                 .collect(java.util.stream.Collectors.toList());
     }
 

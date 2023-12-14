@@ -3,9 +3,15 @@ package com.example.demo.Web;
 import com.example.demo.dtos.UserRegistrationDto;
 import com.example.demo.model.User;
 import com.example.demo.services.implement.AuthService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +20,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
+
+
 
 import java.security.Principal;
 
@@ -39,9 +49,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String doRegister(@Valid UserRegistrationDto userRegistrationDto,
-                             BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes) {
+    public String doRegister(@Valid UserRegistrationDto userRegistrationDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userRegistrationDto", userRegistrationDto);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationDto", bindingResult);
@@ -49,9 +57,14 @@ public class AuthController {
             return "redirect:/users/register";
         }
 
-        this.authService.register(userRegistrationDto);
+        try {
+            this.authService.register(userRegistrationDto);
+            return "redirect:/login";
+        }catch (RuntimeException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/users/register";
+        }
 
-        return "redirect:/users/login";
     }
 
     @GetMapping("/login")
@@ -70,22 +83,19 @@ public class AuthController {
         return "redirect:/users/login";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/profile")
+    public String profile(Principal principal, Model model) {
+        String username = principal.getName();
+        User user = authService.getUser(username);
+        model.addAttribute("user", user);
 
-//    @GetMapping("/profile")
-//    public String profile(Principal principal, Model model) {
-//        String username = principal.getName();
-//        User user = authService.getUser(username);
-//
-//        UserProfileView userProfileView = new UserProfileView(
-//                username,
-//                user.getEmail(),
-//                user.getFullName(),
-//                user.getAge()
-//        );
-//
-//        model.addAttribute("user", userProfileView);
-//
-//        return "profile";
-//    }
+        return "profile";
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        // Ручной выход пользователя
+        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+        return "redirect:/"; // Перенаправление на главную страницу или другую страницу после выхода
+    }
 }

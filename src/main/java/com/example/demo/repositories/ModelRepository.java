@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -17,5 +18,7 @@ public interface ModelRepository extends JpaRepository<Model, UUID> {
             "select ofr.id from Offer ofr where ofr.seller.id in(" +
             "select usr.id from User usr where usr.firstname = :userName))")
     List<Model> findAllModelByUserName(@Param("userName") String userName);
+
+    Optional<Model> findByName(String name);
 
 }

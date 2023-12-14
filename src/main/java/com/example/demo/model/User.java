@@ -24,7 +24,7 @@ public class User extends BaseEntity2{
 
 //    @ManyToOne
 //    @JoinColumn(name = "role_id")
-    private List<UserRole> role;
+    private List<UserRole> roles;
 
 //    @Column(name = "imageurl")
     private String imageurl;
@@ -40,18 +40,7 @@ public class User extends BaseEntity2{
         this.lastname = lastname;
         this.isactive = isactive;
 
-
     }
-
-//    public User(String username, String password, String firstname, String lastname, Boolean isactive, UserRole roleId, String imageurl) {
-//        this.username = username;
-//        this.password = password;
-//        this.firstname = firstname;
-//        this.lastname = lastname;
-//        this.isactive = isactive;
-//        this.roleId = roleId;
-//        this.imageurl = imageurl;
-//    }
 
 
     //Getters and Setters
@@ -96,14 +85,14 @@ public class User extends BaseEntity2{
         this.isactive = isactive;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinColumn(name = "role_id")
-    public List<UserRole> getRole() {
-        return role;
+    public List<UserRole> getRoles() {
+        return roles;
     }
 
-    public void setRole(List<UserRole> roleId) {
-        this.role = roleId;
+    public void setRoles(List<UserRole> roleId) {
+        this.roles = roleId;
     }
 
     @Column(name = "imageurl")

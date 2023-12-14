@@ -29,9 +29,9 @@
             <label class="form-label" for="lastname">Full Name</label>
             <input th:field="*{lastname}"
                    th:errorclass="is-invalid"
-                   type="text" class="form-control text-center" id="lastname" aria-describedby="fullname"
-                   name="fullname"/>
-            <small th:if="${#fields.hasErrors('fullname')}" th:errors="*{lastname}" class="text-danger">Error
+                   type="text" class="form-control text-center" id="lastname" aria-describedby="lastname"
+                   name="lastname"/>
+            <small th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="text-danger">Error
               message</small>
           </div>
 
@@ -39,9 +39,9 @@
             <label class="form-label" for="firstname">Full Name</label>
             <input th:field="*{firstname}"
                    th:errorclass="is-invalid"
-                   type="text" class="form-control text-center" id="firstname" aria-describedby="fullname"
-                   name="fullname"/>
-            <small th:if="${#fields.hasErrors('fullname')}" th:errors="*{firstname}" class="text-danger">Error
+                   type="text" class="form-control text-center" id="firstname" aria-describedby="firstname"
+                   name="firstname"/>
+            <small th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger">Error
               message</small>
           </div>
 
@@ -71,6 +71,9 @@
                    class="text-danger">Error
               message</small>
           </div>
+          <p class="text-danger" th:if="${error}">
+            <p th:text="${error}"></p>
+          </p>
 
           <button type="submit" class="btn btn-secondary">Register</button>
         </form>

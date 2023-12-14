@@ -14,13 +14,12 @@
         <div class="row bg-light rounded">
           <div class="col-md-6" th:object="${user}">
             <h2>User</h2>
-            <h4 th:text="'Full Name: ' + *{fullName}"></h4>
             <h4 th:text="'Username: ' + *{username}"></h4>
-            <h4 th:text="'Age: ' + *{age}"></h4>
+            <h4 th:text="'Full Name: ' + *{firstname} + *{lastname}"></h4>
             <b>User Roles: </b>
             <div sec:authentication="principal.authorities"></div>
           </div>
-          <div class="col-md-6"><img src="/pic/employee.png" height="350px"></div>
+          <div class="col-md-6"><img src="/pic/1692310766_grizly-club-p-kartinki-avatari-bez-fona-60.png" height="350px"></div>
         </div>
       </main>
     </div>

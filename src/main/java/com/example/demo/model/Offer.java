@@ -9,25 +9,23 @@ import java.time.Year;
 @Entity
 @Table(name = "offer")
 public class Offer extends BaseEntity2{
-//    @Column(name = "description")
+
     private String description;
-//    @Column(name = "engine")
+
     private Enums.Engine engine;
-//    @Column(name = "imageurl")
+
     private String imageurl;
-//    @Column(name = "mileage")
+
     private Long mileage;
-//    @Column(name = "price")
+
     private BigDecimal price;
-//    @Column(name = "transmission")
+
     private Enums.Transmission transmission;
-//    @Column(name = "year")
-    private Year year;
-//    @ManyToOne
-//    @JoinColumn(name = "model_id", referencedColumnName = "id")
+
+    private int year;
+
     private Model model;
-//    @ManyToOne
-//    @JoinColumn(name = "user_id",referencedColumnName = "id")
+
     private User seller;
 
 
@@ -92,10 +90,10 @@ public class Offer extends BaseEntity2{
         this.transmission = transmission;
     }
     @Column(name = "year")
-    public Year getYear() {
+    public int getYear() {
         return this.year;
     }
-    public void setYear(Year year) {
+    public void setYear(int year) {
         this.year = year;
     }
     @ManyToOne

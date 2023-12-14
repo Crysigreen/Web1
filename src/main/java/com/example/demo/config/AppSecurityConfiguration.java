@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.implement.AppUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -14,9 +15,9 @@ import org.springframework.security.web.context.DelegatingSecurityContextReposit
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
-
 import com.example.demo.model.Enums.Role;
-import  com.example.demo.repositories.UserRepository;
+
+
 
 @Configuration
 public class AppSecurityConfiguration {
@@ -34,12 +35,13 @@ public class AppSecurityConfiguration {
                                 authorizeHttpRequests.
                                         requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                         .permitAll().
-                                        requestMatchers("/", "/users/login", "/users/register", "/users/login-error")
+                                        requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/offers/**")
                                         .permitAll().
                                         requestMatchers("/users/profile").authenticated().
-                                        //requestMatchers("/employees/add", "/employees/employee-delete/").hasRole(UserRole.MODERATOR.name()).
+                                        requestMatchers("/employees/add", "/employees/employee-delete/").hasRole(Role.Admin.name()).
                                         requestMatchers("/companies/add","/companies/company-delete/","/employees/add", "/employees/employee-delete/").hasRole(Role.Admin.name()).
                                         anyRequest().authenticated()
+
                 )
                 .formLogin(
                         (formLogin) ->
