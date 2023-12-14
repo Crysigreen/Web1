@@ -6,21 +6,9 @@ public class UserRegistrationDto {
 
     // Делайте проверку на уникальность
     private String username;
-
-
     private String lastname;
     private String firstname;
-
-    // Делайте проверку на уникальность
-
-
-
-
-
-
     private String password;
-
-
     private String confirmPassword;
 
     public UserRegistrationDto() {}
