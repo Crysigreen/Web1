@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import com.example.demo.model.Enums.Role;
 
 
@@ -36,14 +37,14 @@ public class AuthService {
             throw new RuntimeException("passwords.match");
         }
 
-//        Optional<User> byEmail = this.userRepository.findByEmail(registrationDTO.getEmail());
-//
-//        if (byEmail.isPresent()) {
-//            throw new RuntimeException("email.used");
-//        }
+        Optional<User> byUsername = this.userRepository.findByUsername(registrationDTO.getUsername());
+
+        if (byUsername.isPresent()) {
+            throw new RuntimeException("Username is already taken!");
+        }
 
         var userRole = userRoleRepository.
-                findRoleByName(Role.User).orElseThrow();
+                findByName(Role.User).orElseThrow();
 
         User user = new User(
                 registrationDTO.getUsername(),
@@ -51,12 +52,10 @@ public class AuthService {
                 registrationDTO.getFirstname(),
                 registrationDTO.getLastname(),
                 true
-//                registrationDTO.getEmail(),
-//                registrationDTO.getFullname(),
-//                registrationDTO.getAge()
         );
 
-        user.setRole(List.of(userRole));
+
+        user.setRoles(List.of(userRole));
 
         this.userRepository.save(user);
     }

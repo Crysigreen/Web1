@@ -3,6 +3,7 @@ package com.example.demo.init;
 import com.example.demo.dtos.*;
 import com.example.demo.model.Enums;
 import com.example.demo.model.UserRole;
+import com.example.demo.repositories.UserRoleRepository;
 import com.example.demo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +23,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private UserService userService;
     private OfferService offerService;
     private UserRoleService userRoleService;
+
+    private UserRoleRepository userRoleRepository;
     @Autowired
     public void setBrandService(BrandService brandService) {
         this.brandService = brandService;
@@ -41,6 +44,11 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     @Autowired
     public void setUserRoleService(UserRoleService userRoleService) {
         this.userRoleService = userRoleService;
+    }
+
+    @Autowired
+    public void setUserRoleRepository(UserRoleRepository userRoleRepository) {
+        this.userRoleRepository = userRoleRepository;
     }
 
     @Override
@@ -92,20 +100,26 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
 
         ////////////////////////////////////////////////////////////////////////
+//        RoleDto roleDto1 = new RoleDto( null, Enums.Role.User,false);
+//        RoleDto roleDto2 = new RoleDto( null, Enums.Role.Admin,false);
 
-        RoleDto roleDto1 = new RoleDto( null, Enums.Role.User,false);
-        RoleDto roleDto2 = new RoleDto( null, Enums.Role.Admin,false);
+        var userRole = new UserRole(Enums.Role.User);
+        var adminRole = new UserRole(Enums.Role.Admin);
 
-        RoleDto roleDto11 = userRoleService.createNewRole(roleDto1);
-        RoleDto roleDto22 = userRoleService.createNewRole(roleDto2);
+
+        userRoleRepository.save(userRole);
+        userRoleRepository.save(adminRole);
+
+        //RoleDto roleDto11 = userRoleService.createNewRole(userRole);
+        //RoleDto roleDto22 = userRoleService.createNewRole(adminRole);
 
         ////////////////////////////////////////////////////////////////////////
 
-        UserDto userDto1 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName1", "imageurl","lastName","password",roleDto11,"username1",false );
-        UserDto userDto2 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName2", "imageurl","lastName","password",roleDto11,"username2",false );
-        UserDto userDto3 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName3", "imageurl","lastName","password",roleDto11,"username3",false );
-        UserDto userDto4 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName4", "imageurl","lastName","password",roleDto11,"username4",false );
-        UserDto userDto5 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName5", "imageurl","lastName","password",roleDto22,"username5",false );
+        UserDto userDto1 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName1", "imageurl","lastName","password",userRole,"username1",false );
+        UserDto userDto2 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName2", "imageurl","lastName","password",userRole,"username2",false );
+        UserDto userDto3 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName3", "imageurl","lastName","password",userRole,"username3",false );
+        UserDto userDto4 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName4", "imageurl","lastName","password",userRole,"username4",false );
+        UserDto userDto5 = new UserDto(LocalDateTime.of(2023,7,1,10,0,0), true, LocalDateTime.of(2023,7,1,10,0,0), null, "firstName5", "imageurl","lastName","password",adminRole,"username5",false );
 
         UserDto userDto11 =  userService.createUser(userDto1);
         UserDto userDto22 = userService.createUser(userDto2);
@@ -123,6 +137,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         OfferDto offerDto4 = new OfferDto(LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), new BigDecimal(21000),Year.of(2023),null,10000l,"description", Enums.Engine.DIESEL,"imageurl",modelDto44.getId(),userDto44.getId(),Enums.Transmission.MANUAL,false);
         OfferDto offerDto5 = new OfferDto(LocalDateTime.of(2023,7,1,10,0,0), LocalDateTime.of(2023,7,1,10,0,0), new BigDecimal(164000),Year.of(2023),null,10000l,"description", Enums.Engine.ELECTRIC,"imageurl",modelDto55.getId(),userDto55.getId(),Enums.Transmission.AUTOMATIC,false);
 
+        offerDto1.setModel(modelDto11.getId());
 
 
         OfferDto offerDto11 = offerService.createOffer(offerDto1);

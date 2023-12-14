@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.dtos.AddOfferDto;
 import com.example.demo.dtos.OfferDto;
 import com.example.demo.dtos.homeOffer;
 
@@ -9,7 +10,9 @@ public interface OfferService<ID> {
 
     OfferDto createOffer(OfferDto offerDto);
 
-    List<OfferDto> getAllOffers();
+    void register(AddOfferDto offer);
+
+    List<AddOfferDto> getAllOffers();
 
     List<homeOffer> getHomeOffer();
 

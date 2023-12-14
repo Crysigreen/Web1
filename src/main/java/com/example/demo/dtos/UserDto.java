@@ -1,5 +1,7 @@
 package com.example.demo.dtos;
 
+import com.example.demo.model.UserRole;
+
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,14 +16,14 @@ public class UserDto {
     private String imageurl;
     private String lastName;
     private String password;
-    private RoleDto role;
+    private UserRole role;
     private String username;
     private Boolean isDeleted;
 
     public UserDto() {
     }
 
-    public UserDto(LocalDateTime created, Boolean isActive, LocalDateTime modified, UUID id, String firstName, String imageurl, String lastName, String password, RoleDto role, String username, Boolean isDeleted) {
+    public UserDto(LocalDateTime created, Boolean isActive, LocalDateTime modified, UUID id, String firstName, String imageurl, String lastName, String password, UserRole role, String username, Boolean isDeleted) {
         this.created = created;
         this.isActive = isActive;
         this.modified = modified;
@@ -102,11 +104,11 @@ public class UserDto {
         this.password = password;
     }
 
-    public RoleDto getRole() {
+    public UserRole getRole() {
         return this.role;
     }
 
-    public void setRole(RoleDto role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
