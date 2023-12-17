@@ -2,6 +2,8 @@ package com.example.demo.Web;
 
 import com.example.demo.dtos.ModelDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.services.ModelService;
@@ -9,7 +11,7 @@ import com.example.demo.services.ModelService;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
+@Controller
 public class ModelController {
 
     private ModelService modelService;
@@ -25,6 +27,13 @@ public class ModelController {
         ModelDto createModel = modelService.createNewModel(modelDto);
         return createModel;
     }
+
+//    @GetMapping("/all")
+//    public String getAllModels(Model model){
+////        model.addAttribute("allModels", modelService.getAllModels());
+//        model.addAttribute("topThreeModel", modelService.getTopThreeModels());
+//        return "Models-all";
+//    }
 
     @GetMapping("/model")
     List<ModelDto> getAllModels(){

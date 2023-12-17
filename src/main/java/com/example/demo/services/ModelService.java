@@ -14,6 +14,8 @@ public interface ModelService<ID>{
 
     List<ModelDto> getAllModels();
 
+    List<ModelDto> getTopThreeModels();
+
     ModelDto getModelById(ID id);
 
     ModelDto updateModel(ID id, ModelDto modelDto);

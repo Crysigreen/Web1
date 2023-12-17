@@ -67,6 +67,42 @@
         </div>
 
 
+        <div class="row">
+            <th:block th:each="topModel : ${topThreeModel}">
+                <div class="col-4">
+                    <div class="card mb-3 text-center" style="width: 600px; height: 280px ; margin: auto ">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img th:src="${topModel?.imageUrl}" style="height: 279px" class="img-fluid rounded-start">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${topModel?.name}"></h5>
+                                    <p th:text="'Категория авто: ' + ${topModel?.category}"></p>
+                                    <p th:text="'Дата начала: ' + ${topModel?.startYear}" ></p>
+                                    <p th:text="'Дата конца: ' + ${topModel?.endYear}" ></p>
+                                    <p th:text="'Дата создания: ' + ${topModel?.created}" ></p>
+                                    <p th:text="'Бренд: ' + ${topModel?.brands.name}" ></p>
+                                    <p><a  style="
+                                                        width: 230px;
+                                                        height: 45px;
+                                                        padding: 3px;
+                                                        text-align: center;
+                                                        border: 1px solid black;
+                                                        border-radius: 10px;
+                                                        color: black;
+                                                        text-decoration: none;"
+                                           th:href="@{/Models/vive/Models-details/{name}/{startYear}/{endYear}(name=${topModel.name}, startYear=${topModel.startYear}, endYear=${topModel.endYear})}" >Подробнее</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+
+
 
 
 

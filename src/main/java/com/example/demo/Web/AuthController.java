@@ -6,6 +6,8 @@ import com.example.demo.services.implement.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -27,9 +29,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
+
 @Controller
 @RequestMapping("/users")
 public class AuthController {
+
+    private static final Logger LOG = LogManager.getLogger(Controller.class);
 
     private AuthService authService;
 

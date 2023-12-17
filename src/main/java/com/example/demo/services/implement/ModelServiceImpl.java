@@ -46,6 +46,12 @@ public class ModelServiceImpl implements ModelService<UUID> {
     }
 
     @Override
+    public List<ModelDto> getTopThreeModels(){
+        List<Model> topThreeModelsList = modelRepository.findTopThree();
+        return topThreeModelsList.stream().map(models -> modelMapper.map(models, ModelDto.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public ModelDto getModelById(UUID id) {
         return modelMapper.map(modelRepository.findById(id).get(), ModelDto.class);
     }

@@ -19,6 +19,9 @@ public interface ModelRepository extends JpaRepository<Model, UUID> {
             "select usr.id from User usr where usr.firstname = :userName))")
     List<Model> findAllModelByUserName(@Param("userName") String userName);
 
+    @Query("select m from Model m where m.id in (select o.model.id from Offer o group by o.model.id order by count (o.model.id) desc limit 3)")
+    List<Model> findTopThree ();
+
     Optional<Model> findByName(String name);
 
 }
