@@ -14,6 +14,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +26,7 @@ import java.util.UUID;
 @RequestMapping("/offers")
 public class OfferController {
 
+    private static final Logger LOG = LogManager.getLogger(Controller.class);
     private OfferService offerService;
     private ModelService modelService;
     private UserService userService;
@@ -33,7 +39,8 @@ public class OfferController {
     public void setUserService(UserService userService){this.userService = userService;}
 
     @GetMapping("/offers")
-    public String getAllOffers(Model model) {
+    public String getAllOffers(Principal principal, Model model) {
+        LOG.log(Level.INFO, "show all offers for: " + principal.getName());
         List<AddOfferDto> offers = offerService.getAllOffers();
         model.addAttribute("offers", offers);
         return "offers";
@@ -41,27 +48,13 @@ public class OfferController {
 
     @GetMapping("/add")
     public String showCreateOfferForm(Model model) {
-        // Здесь можете добавить логику для получения данных, которые могут быть полезны на странице создания
-        // Например, список моделей автомобилей или другие данные, которые пользователь может выбрать
-
-        // Пример:
-
         model.addAttribute("availableModels", modelService.getAllModels());
         model.addAttribute("availableUsers", userService.getAllUsers());
         model.addAttribute("AddOfferDto", new AddOfferDto());
 
-        //model.addAttribute("offerDto", new OfferDto());
         return "offer-add";
     }
 
-//    @PostMapping("/offers/create")
-//    public String createOffer(@ModelAttribute OfferDto offerDto) {
-//        // Добавьте логику для сохранения оффера в базу данных, например:
-//        offerService.createOffer(offerDto);
-//
-//        // После сохранения оффера, вы можете перенаправить пользователя на страницу списка офферов или другую страницу
-//        return "redirect:/offers";
-//    }
     @PostMapping("/offer/create")
     public String createOffer(@Valid AddOfferDto offerModel, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 

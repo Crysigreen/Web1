@@ -17,9 +17,9 @@ public class Model extends BaseEntity2{
     //@Column(name = "imageurl")
     private String imageurl;
     //@Column(name = "startyear")
-    private LocalDateTime startyear;
+    private int startyear;
 //    @Column(name = "endyear")
-    private LocalDateTime endyear;
+    private int endyear;
 //    @ManyToOne
 //    @JoinColumn(name = "brand_id")
     private Brand brand;
@@ -67,20 +67,20 @@ public class Model extends BaseEntity2{
     }
 
     @Column(name = "startyear")
-    public LocalDateTime getStartyear() {
+    public int getStartyear() {
         return this.startyear;
     }
 
-    public void setStartyear(LocalDateTime startyear) {
+    public void setStartyear(int startyear) {
         this.startyear = startyear;
     }
 
     @Column(name = "endyear")
-    public LocalDateTime getEndyear() {
+    public int getEndyear() {
         return this.endyear;
     }
 
-    public void setEndyear(LocalDateTime endyear) {
+    public void setEndyear(int endyear) {
         this.endyear = endyear;
     }
 

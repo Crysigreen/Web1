@@ -67,6 +67,65 @@
         </div>
 
 
+<!--        <div class="row">-->
+<!--            <th:block th:each="topModel : ${TopThreeModel}">-->
+<!--                <div class="col-4">-->
+<!--                    <div class="card mb-3 text-center" style="width: 600px; height: 280px ; margin: auto ">-->
+<!--                        <div class="row g-0">-->
+<!--                            <div class="col-md-6">-->
+<!--                                <img th:src="${topModel?.model.imageurl}" style="height: 279px" class="img-fluid rounded-start">-->
+<!--                            </div>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="card-body">-->
+<!--                                    <h5 class="card-title" th:text="${topModel?.model.name}"></h5>-->
+<!--                                    <p th:text="'Категория авто: ' + ${topModel?.model.category}"></p>-->
+<!--                                    <p th:text="'Дата начала: ' + ${topModel?.model.startyear}" ></p>-->
+<!--                                    <p th:text="'Дата конца: ' + ${topModel?.model.endyear}" ></p>-->
+<!--                                    <p th:text="'Дата создания: ' + ${topModel?.model.created}" ></p>-->
+<!--                                    <p th:text="'Бренд: ' + ${topModel?.model.brand.name}" ></p>-->
+<!--                                    <p th:text="'Количество обьявлений: ' + ${topModel?.count}" ></p>-->
+<!--                                    <p><a  style="-->
+<!--                                                        width: 230px;-->
+<!--                                                        height: 45px;-->
+<!--                                                        padding: 3px;-->
+<!--                                                        text-align: center;-->
+<!--                                                        border: 1px solid black;-->
+<!--                                                        border-radius: 10px;-->
+<!--                                                        color: black;-->
+<!--                                                        text-decoration: none;"-->
+<!--                                           th:href="@{/Models/vive/Models-details/{name}/{startyear}/{endyear}(name=${topModel.model.name}, startYear=${topModel.model.startyear}, endYear=${topModel.model.endyear})}" >Подробнее</a>-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </th:block>-->
+<!--        </div>-->
+
+        <div class="row">
+            <th:block th:each="topModel : ${TopThreeModel}">
+                <div class="col-4 mb-3">
+                    <div class="card h-100">
+                        <img th:src="${topModel?.model.imageurl}" class="card-img-top" alt="Car Image">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${topModel?.model.name}"></h5>
+                            <p th:if="${topModel?.model.category}" th:text="'Категория авто: ' + ${topModel?.model.category}"></p>
+                            <p th:if="${topModel?.model.startyear}" th:text="'Дата начала: ' + ${topModel?.model.startyear}"></p>
+                            <p th:if="${topModel?.model.endyear}" th:text="'Дата конца: ' + ${topModel?.model.endyear}"></p>
+                            <p th:if="${topModel?.model.created}" th:text="'Дата создания: ' + ${topModel?.model.created}"></p>
+                            <p th:if="${topModel?.model.brand.name}" th:text="'Бренд: ' + ${topModel?.model.brand.name}"></p>
+                            <p th:if="${topModel?.count}" th:text="'Количество объявлений: ' + ${topModel?.count}"></p>
+                            <a class="btn btn-primary" th:href="@{/Models/vive/Models-details/{name}/{startyear}/{endyear}(name=${topModel.model.name}, startYear=${topModel.model.startyear}, endYear=${topModel.model.endyear})}">
+                                Подробнее
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+
+
 
 
 

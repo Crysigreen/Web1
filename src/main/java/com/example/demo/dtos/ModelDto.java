@@ -11,8 +11,8 @@ public class ModelDto {
 
     private UUID id;
     private String name;
-    private LocalDateTime endyear;
-    private LocalDateTime startyear;
+    private int endyear;
+    private int startyear;
     private BrandDto brand;
     private Enums.Category category;
     private String imageurl;
@@ -23,7 +23,7 @@ public class ModelDto {
     public ModelDto() {
     }
 
-    public ModelDto(UUID id, String name, LocalDateTime endyear, LocalDateTime startyear, BrandDto brand, Enums.Category category, String imageurl, LocalDateTime created, LocalDateTime modified, Boolean isDeleted) {
+    public ModelDto(UUID id, String name, int endyear, int startyear, BrandDto brand, Enums.Category category, String imageurl, LocalDateTime created, LocalDateTime modified, Boolean isDeleted) {
         this.id = id;
         this.name = name;
         this.endyear = endyear;
@@ -52,11 +52,11 @@ public class ModelDto {
         this.modified = modified;
     }
 
-    public LocalDateTime getEndyear() {
+    public int getEndyear() {
         return this.endyear;
     }
 
-    public void setEndyear(LocalDateTime endyear) {
+    public void setEndyear(int endyear) {
         this.endyear = endyear;
     }
 
@@ -68,11 +68,11 @@ public class ModelDto {
         this.id = id;
     }
 
-    public LocalDateTime getStartyear() {
+    public int getStartyear() {
         return this.startyear;
     }
 
-    public void setStartyear(LocalDateTime startyear) {
+    public void setStartyear(int startyear) {
         this.startyear = startyear;
     }
 

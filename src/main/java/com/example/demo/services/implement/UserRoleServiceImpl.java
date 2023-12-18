@@ -7,12 +7,14 @@ import com.example.demo.repositories.UserRoleRepository;
 import com.example.demo.services.UserRoleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@EnableCaching
 public class UserRoleServiceImpl implements UserRoleService<UUID>{
 
 

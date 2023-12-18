@@ -7,12 +7,14 @@ import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@EnableCaching
 public class UserServiceImpl implements UserService<UUID> {
 
     private UserRepository userRepository;
@@ -57,5 +59,4 @@ public class UserServiceImpl implements UserService<UUID> {
     public void deleteUser(UUID id) {
         userRepository.deleteById(id);
     }
-
 }
