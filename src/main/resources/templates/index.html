@@ -7,20 +7,18 @@
 
     <div class="container mt-4">
 
-        <!-- Заголовок -->
         <div class="jumbotron">
             <h1 class="display-4">Добро пожаловать в AutoMarket!</h1>
             <p class="lead">Ваш лучший выбор автомобилей по выгодным ценам.</p>
             <hr class="my-4">
         </div>
 
-        <!-- Витрина брендов -->
         <h2>Популярные бренды</h2>
         <div class="row justify-content-center">
             <!-- Карточка бренда -->
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="/pic/Brands/bmw-emblem.jpg" class="card-img-top" alt="Brand Logo">
+                    <img src="https://www.freepnglogos.com/uploads/bmw-logo-14.png" class="card-img-top" alt="Brand Logo">
                     <div class="card-body">
                         <h5 class="card-title">BMW</h5>
                         <a href="#" class="btn btn-primary stretched-link">Перейти к моделям</a>
@@ -29,7 +27,7 @@
             </div>
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="/pic/Brands/audi-emblem.jpg" class="card-img-top" alt="Brand Logo">
+                    <img src="https://azia-ek.ru/media/files/products/inside-placeholder-1473425709-audi-logo-transparent-background-wallpaper-6.jpg.png" class="card-img-top" alt="Brand Logo">
                     <div class="card-body">
                         <h5 class="card-title">Audi</h5>
                         <a href="#" class="btn btn-primary stretched-link">Перейти к моделям</a>
@@ -38,7 +36,7 @@
             </div>
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="/pic/Brands/mercedes-benz-emblem.jpg" class="card-img-top" alt="Brand Logo">
+                    <img src="https://top-fon.com/uploads/posts/2023-01/1674686488_top-fon-com-p-fon-dlya-prezentatsii-mersedes-161.png" class="card-img-top" alt="Brand Logo">
                     <div class="card-body">
                         <h5 class="card-title">Mercedes-Benz</h5>
                         <a href="#" class="btn btn-primary stretched-link">Перейти к моделям</a>
@@ -47,7 +45,7 @@
             </div>
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="/pic/Brands/toyota-emblem.jpg" class="card-img-top" alt="Brand Logo">
+                    <img src="https://legen-auto.ru/wa-data/public/shop/plugins/brand/brand_image/logo02.webp" class="card-img-top" alt="Brand Logo">
                     <div class="card-body">
                         <h5 class="card-title">Toyota</h5>
                         <a href="#" class="btn btn-primary stretched-link">Перейти к моделям</a>
@@ -56,53 +54,16 @@
             </div>
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="/pic/Brands/no_image-3840x2160_crop.webp" class="card-img-top" alt="Brand Logo">
+                    <img src="https://krasnoyarsk.3d-prime.ru/upload/brands/643f75ae58d36.jpg" class="card-img-top" alt="Brand Logo">
                     <div class="card-body">
                         <h5 class="card-title">Omoda</h5>
                         <a href="#" class="btn btn-primary stretched-link">Перейти к моделям</a>
                     </div>
                 </div>
             </div>
-            <!-- Дополнительные карточки для других брендов -->
         </div>
 
-
-<!--        <div class="row">-->
-<!--            <th:block th:each="topModel : ${TopThreeModel}">-->
-<!--                <div class="col-4">-->
-<!--                    <div class="card mb-3 text-center" style="width: 600px; height: 280px ; margin: auto ">-->
-<!--                        <div class="row g-0">-->
-<!--                            <div class="col-md-6">-->
-<!--                                <img th:src="${topModel?.model.imageurl}" style="height: 279px" class="img-fluid rounded-start">-->
-<!--                            </div>-->
-<!--                            <div class="col-md-6">-->
-<!--                                <div class="card-body">-->
-<!--                                    <h5 class="card-title" th:text="${topModel?.model.name}"></h5>-->
-<!--                                    <p th:text="'Категория авто: ' + ${topModel?.model.category}"></p>-->
-<!--                                    <p th:text="'Дата начала: ' + ${topModel?.model.startyear}" ></p>-->
-<!--                                    <p th:text="'Дата конца: ' + ${topModel?.model.endyear}" ></p>-->
-<!--                                    <p th:text="'Дата создания: ' + ${topModel?.model.created}" ></p>-->
-<!--                                    <p th:text="'Бренд: ' + ${topModel?.model.brand.name}" ></p>-->
-<!--                                    <p th:text="'Количество обьявлений: ' + ${topModel?.count}" ></p>-->
-<!--                                    <p><a  style="-->
-<!--                                                        width: 230px;-->
-<!--                                                        height: 45px;-->
-<!--                                                        padding: 3px;-->
-<!--                                                        text-align: center;-->
-<!--                                                        border: 1px solid black;-->
-<!--                                                        border-radius: 10px;-->
-<!--                                                        color: black;-->
-<!--                                                        text-decoration: none;"-->
-<!--                                           th:href="@{/Models/vive/Models-details/{name}/{startyear}/{endyear}(name=${topModel.model.name}, startYear=${topModel.model.startyear}, endYear=${topModel.model.endyear})}" >Подробнее</a>-->
-<!--                                    </p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </th:block>-->
-<!--        </div>-->
-
+        <h2>Самые популярные модели</h2>
         <div class="row">
             <th:block th:each="topModel : ${TopThreeModel}">
                 <div class="col-4 mb-3">
@@ -125,14 +86,8 @@
             </th:block>
         </div>
 
-
-
-
-
-        <!-- Спецпредложения -->
         <h2>Спецпредложения</h2>
         <div class="row">
-            <!-- Пример карточки для спецпредложения -->
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <img src="..." class="card-img-top" alt="...">
@@ -143,37 +98,10 @@
                     </div>
                 </div>
             </div>
-            <!-- Дополнительные карточки для других спецпредложений -->
         </div>
 
-        <!-- Карусель с объявлениями -->
-<!--        <div id="carouselExample" class="carousel slide" data-ride="carousel">-->
-<!--            <div class="carousel-inner">-->
-<!--                &lt;!&ndash; Используйте Thymeleaf для отображения объявлений из базы данных &ndash;&gt;-->
-<!--                <div th:each="ad, iterStat : ${advertisements}"-->
-<!--                     th:classappend="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">-->
-<!--                    <img th:src="${ad.car.imageUrl}" class="d-block w-100" alt="Car Image">-->
-<!--                    <div class="carousel-caption d-none d-md-block">-->
-<!--                        <h5 th:text="${ad.car.model}"></h5>-->
-<!--                        <p th:text="'Цена: ' + ${ad.car.price}"></p>-->
-<!--                        <a th:href="@{'/car/' + ${ad.car.id}}" class="btn btn-primary">Подробнее</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">-->
-<!--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                <span class="sr-only">Previous</span>-->
-<!--            </a>-->
-<!--            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">-->
-<!--                <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                <span class="sr-only">Next</span>-->
-<!--            </a>-->
-<!--        </div>-->
-
-        <!-- Каталог автомобилей -->
         <h2>Каталог автомобилей</h2>
         <div class="row">
-            <!-- Пример карточки для автомобиля -->
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <img src="..." class="card-img-top" alt="...">
@@ -184,7 +112,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Дополнительные карточки для других автомобилей -->
         </div>
 
     </div>

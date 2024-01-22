@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-@EnableCaching
+//@EnableCaching
 public class ModelServiceImpl implements ModelService<UUID> {
 
     private ModelMapper modelMapper;
@@ -34,31 +34,19 @@ public class ModelServiceImpl implements ModelService<UUID> {
     }
 
     @Override
-    @CacheEvict(cacheNames = "models", allEntries = true)
+    //@CacheEvict(cacheNames = "models", allEntries = true)
     public ModelDto createNewModel(ModelDto modelDto) {
         Model model = modelMapper.map(modelDto, Model.class);
         return modelMapper.map(modelRepository.save(model), ModelDto.class);
     }
-//    @Cacheable("models")
+    //@Cacheable("models")
     public List<homeTop3ModelDto> getTopThreeModel(){
         return modelRepository.findTopThree();
     }
 
-//    @Override
-//    @Cacheable("models")
-//    public List<ShowModelInfoDto> getAllModels() {
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//        List<Model> models = modelRepository.findAll();
-//        return models.stream()
-//                .map(model -> modelMapper.map(model, ShowModelInfoDto.class))
-//                .collect(Collectors.toList());
-//    }
 
-    @Cacheable("models")
+
+    //@Cacheable("models")
     public List<ShowModelInfoDto> getAllModels() {
         try {
             Thread.sleep(5000);
@@ -75,7 +63,7 @@ public class ModelServiceImpl implements ModelService<UUID> {
     }
 
     @Override
-    @CacheEvict(cacheNames = "models", allEntries = true)
+    //@CacheEvict(cacheNames = "models", allEntries = true)
     public ModelDto updateModel(UUID id, ModelDto modelDto) {
         Model model = modelRepository.findById(id).get();
         modelMapper.map(modelDto, model);
@@ -88,7 +76,7 @@ public class ModelServiceImpl implements ModelService<UUID> {
     }
 
     @Override
-    @CacheEvict(cacheNames = "models", allEntries = true)
+   //@CacheEvict(cacheNames = "models", allEntries = true)
     public void deleteModel(UUID id) {
         modelRepository.deleteById(id);
     }

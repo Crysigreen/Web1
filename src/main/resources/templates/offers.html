@@ -14,7 +14,6 @@
         <div class="row bg-light rounded">
           <div class="col-md-12" th:each="offer : ${offers}">
             <div class="card mb-3">
-              <!-- Добавьте поля для отображения информации об офере -->
               <div class="row g-0">
                 <div class="col-md-4">
                   <img th:src="${offer.imageURL}" alt="Car Image" class="img-fluid">
@@ -24,7 +23,6 @@
                     <h5 class="card-title" th:text="${offer.model}"></h5>
                     <p class="card-text" th:text="'Year: ' + ${offer.year}"></p>
                     <p class="card-text" th:text="'Price: ' + ${offer.price}"></p>
-                    <!-- Добавьте другие поля для отображения информации об офере -->
                   </div>
                 </div>
               </div>

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@EnableCaching
+//@EnableCaching
 public class UserRoleServiceImpl implements UserRoleService<UUID>{
 
 

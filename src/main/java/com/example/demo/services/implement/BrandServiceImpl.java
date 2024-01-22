@@ -17,7 +17,7 @@ import java.util.UUID;
 
 
 @Service
-@EnableCaching
+//@EnableCaching
 public class BrandServiceImpl implements BrandService<UUID> {
 
     private final ModelMapper modelMapper;
@@ -38,20 +38,20 @@ public class BrandServiceImpl implements BrandService<UUID> {
 //        this.modelMapper = modelMapper;
 //    }
 
-    @CacheEvict(cacheNames = "brands", allEntries = true)
+    //@CacheEvict(cacheNames = "brands", allEntries = true)
     public void addNewBrand(addBrandDto brandDto) {
         brandRepository.saveAndFlush(modelMapper.map(brandDto, Brand.class));
     }
 
     @Override
-    @CacheEvict(cacheNames = "brands", allEntries = true)
+    //@CacheEvict(cacheNames = "brands", allEntries = true)
     public BrandDto createNewBrand(BrandDto brandDto) {
         Brand brand = modelMapper.map(brandDto, Brand.class);
         return modelMapper.map(brandRepository.save(brand), BrandDto.class);
     }
 
     @Override
-    @Cacheable("brands")
+    //@Cacheable("brands")
     public List<BrandDto> getAllBrands() {
         try {
             Thread.sleep(5000);

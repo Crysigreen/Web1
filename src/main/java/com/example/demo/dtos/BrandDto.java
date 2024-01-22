@@ -11,17 +11,14 @@ public class BrandDto {
     private String name;
     private Boolean isDeleted;
 
-
     public BrandDto() {
     }
-
 
     public BrandDto(UUID id, String name, Boolean isDeleted) {
         this.id = id;
         this.name = name;
         this.isDeleted = isDeleted;
     }
-
 
     public UUID getId() {
         return this.id;

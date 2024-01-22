@@ -8,18 +8,12 @@ import java.sql.Date;
 @Table(name = "brand")
 public class Brand extends BaseEntity2{
 
-    //@Column(name = "name")
     private String name;
-
-
     public Brand() {
     }
-
-//    public Brand(String name) {
-//        this.name = name;
-//    }
-
-
+    public Brand(String name) {
+        this.name = name;
+    }
     //Getters and Setters
     @Column(name = "name")
     public String getName() {
@@ -29,5 +23,4 @@ public class Brand extends BaseEntity2{
     public void setName(String name) {
         this.name = name;
     }
-
 }

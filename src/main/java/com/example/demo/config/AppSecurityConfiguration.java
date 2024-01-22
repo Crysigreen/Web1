@@ -2,6 +2,7 @@ package com.example.demo.config;
 
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.implement.AppUserDetailsService;
+import org.springframework.boot.autoconfigure.security.StaticResourceLocation;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,10 +34,8 @@ public class AppSecurityConfiguration {
                 .authorizeHttpRequests(
                         authorizeHttpRequests ->
                                 authorizeHttpRequests.
-                                        requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-                                        .permitAll().
-                                        requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/offers/**")
-                                        .permitAll().
+                                        requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
+                                        requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/offers/**").permitAll().
                                         requestMatchers("/users/profile").authenticated().
                                         requestMatchers("/employees/add", "/employees/employee-delete/").hasRole(Role.Admin.name()).
                                         requestMatchers("/companies/add","/companies/company-delete/","/employees/add", "/employees/employee-delete/").hasRole(Role.Admin.name()).
@@ -63,6 +62,8 @@ public class AppSecurityConfiguration {
 
         return http.build();
     }
+
+
 
     @Bean
     public SecurityContextRepository securityContextRepository() {

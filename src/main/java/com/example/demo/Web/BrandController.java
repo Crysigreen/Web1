@@ -24,21 +24,10 @@ public class BrandController {
         this.brandService = brandService;
     }
 
-//    @Autowired
-//    public void setBrandService(BrandService brandService){
-//        this.brandService = brandService;
-//    }
-
     @ModelAttribute("brandModel")
     public addBrandDto initBrand() {
         return new addBrandDto();
     }
-
-//    @PostMapping("/brand")
-//    BrandDto createNewBrand(@RequestBody BrandDto brandDto){
-//        BrandDto createBrand = brandService.createNewBrand(brandDto);
-//        return createBrand;
-//    }
 
     @GetMapping("/add")
     public String addBrand() {
@@ -47,7 +36,6 @@ public class BrandController {
 
     @PostMapping("/add")
     public String createNewBrand(@Valid addBrandDto brandDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        // Ваш код для обработки формы
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("brandDto", brandDto);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.brandDto",
@@ -65,12 +53,6 @@ public class BrandController {
         return "brand-all";
     }
 
-//    @GetMapping("/brand-delete/{brand-name}")
-//    public String deleteCompany(@PathVariable("brand-name") String brandName) {
-//        brandService.removeCompany(brandName);
-//        return "redirect:/brands/all";
-//    }
-
     @GetMapping("/delete")
     public String showDeleteForm(Model model) {
         model.addAttribute("brandToDelete", new addBrandDto());
@@ -82,37 +64,5 @@ public class BrandController {
         brandService.removeCompany(brandDto.getName());
         return "redirect:/brands/all";
     }
-
-
-//    @GetMapping("/all")
-//    List<BrandDto> getAllBrands(){
-//        List<BrandDto> brands = brandService.getAllBrands();
-//        return brands;
-//    }
-
-//    @GetMapping("/brand/{id}")
-//    BrandDto getBrandById(@PathVariable UUID id){
-//        BrandDto brand = brandService.getBrandById(id);
-//        return brand;
-//    }
-//
-//    @PutMapping("/brand/{id}")
-//    BrandDto updateBrand(@PathVariable UUID id, @RequestBody BrandDto brandDto){
-//        BrandDto updateBrand = brandService.updateBrand(id, brandDto);
-//        return updateBrand;
-//    }
-//
-//    @DeleteMapping("/brand/{id}")
-//    Void deleteBrand(@PathVariable UUID id){
-//        brandService.deleteBrand(id);
-//        return null;
-//    }
-//
-//    @GetMapping("/brand/delete/{id}")
-//    BrandDto isDeleted(@PathVariable UUID id){
-//        BrandDto deletedBrand = brandService.isDeleted(id);
-//        return deletedBrand;
-//    }
-
 
 }

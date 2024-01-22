@@ -7,28 +7,13 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity2{
-//    @Column(name = "username")
     private String username;
-
-//    @Column(name = "password")
     private String password;
-
-//    @Column(name = "first_name")
     private String firstname;
-
-//    @Column(name = "last_name")
     private String lastname;
-
-//    @Column(name = "is_active")
     private Boolean isactive;
-
-//    @ManyToOne
-//    @JoinColumn(name = "role_id")
     private List<UserRole> roles;
-
-//    @Column(name = "imageurl")
     private String imageurl;
-
 
     public User() {
     }

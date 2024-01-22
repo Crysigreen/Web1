@@ -4,7 +4,6 @@ import jakarta.validation.constraints.*;
 
 public class UserRegistrationDto {
 
-    // Делайте проверку на уникальность
     private String username;
     private String lastname;
     private String firstname;

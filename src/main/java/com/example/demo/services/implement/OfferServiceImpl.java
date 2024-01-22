@@ -22,7 +22,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-@EnableCaching
+//@EnableCaching
 public class OfferServiceImpl implements OfferService<UUID> {
 
     private OfferRepository offerRepository;
@@ -55,7 +55,7 @@ public class OfferServiceImpl implements OfferService<UUID> {
         return modelMapper.map(offerRepository.save(offer), OfferDto.class);
     }
 
-    @CacheEvict(cacheNames = "offers", allEntries = true)
+    //@CacheEvict(cacheNames = "offers", allEntries = true)
     public void register(AddOfferDto offer) {
         Offer of = modelMapper.map(offer, Offer.class);
         of.setCreated(LocalDateTime.now());
